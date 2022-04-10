@@ -1,4 +1,4 @@
-{ 
+{
   "scripts": {
     "docs:build": "vuepress build docs"
   },
@@ -7,6 +7,8 @@
   "main": "index.js",
   "repository": "git@github.com:ifreeky/ifreeky.github.io.git",
   "author": "ifreeky",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.38"
+  }
 }
-
