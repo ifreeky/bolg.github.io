@@ -1,0 +1,13 @@
+{ 
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "name": "learn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ifreeky/ifreeky.github.io.git",
+  "author": "ifreeky",
+  "license": "MIT"
+}
+
