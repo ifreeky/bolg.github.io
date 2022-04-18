@@ -255,7 +255,7 @@
     vue "^3.2.31"
     vue-router "^4.0.14"
 
-"@vuepress/plugin-back-to-top@2.0.0-beta.38":
+"@vuepress/plugin-back-to-top@2.0.0-beta.38", "@vuepress/plugin-back-to-top@^2.0.0-beta.38":
   version "2.0.0-beta.38"
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-2.0.0-beta.38.tgz#96766d4d18e290d5d272c685f1feda26b2b6abf6"
   integrity sha512-tWkhCB632OFKXqDDT0rKwTqQJOpiUxRpWhfNs1tzS4yNBzGkj5LGEubcwQbNQR0ujHkw/N6V+ehmWBC/RCNwjw==
