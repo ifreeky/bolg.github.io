@@ -24,7 +24,7 @@ module.exports = {
 
     markdown: {
         // ......
-        extendsMarkdown: md => {
+        extendMarkdown: md => {
           md.use(require("markdown-it-disable-url-encode"));
         }
       }
