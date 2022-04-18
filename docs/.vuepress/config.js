@@ -22,4 +22,11 @@ module.exports = {
   
     plugins: ['@vuepress/back-to-top', '@vuepress/medium-zoom'],
 
+    markdown: {
+        // ......
+        extendMarkdown: md => {
+          md.use(require("markdown-it-disable-url-encode"));
+        }
+      }
+
 }
