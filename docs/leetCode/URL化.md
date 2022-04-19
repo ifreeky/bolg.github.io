@@ -24,4 +24,94 @@ URL化。编写一种方法，将字符串中的空格全部替换为%20。假�
 1. 首先准备两个指针，pre指针指向原始数组末尾，last指针指向替换后的数组末尾。如图：
 ![xx](../.vuepress/public/_images/url01.png)
 
+2. 同时向前移动两个指针，将 pre 指针对应的字符复制到 last 指针对应的位置，直到pre指针碰到空格为止，如图：
+![xx](../.vuepress/public/_images/url02.png)
 
+3. 当pre指针指向空格时，将pre指针向前移动 1 位，last 指针向前移动 3 位，依次插入 0、2、%，如图：
+![xx](../.vuepress/public/_images/url03.png)
+
+4. 当 pre 指针与 last 指针相遇时，说明替换完成。
+
+- 代码如下：
+```java
+class Solution {
+    public String replaceSpaces(String S, int length) {
+
+        // 边界条件
+        if(S == null || S.length() == 0) {
+            return S;
+        }
+
+        // 双指针位置
+        int preIndex = length - 1;
+        int lastIndex = preIndex;
+        for(int i=0; i < length; i++) {
+            if(str[i] == ' ') {
+                lastIndex +=2;
+            }
+        }
+
+        // 替换字符串
+        while(lastIndex != preIndex) {
+            if(str[preIndex] != ' ') {
+                // 复制
+                str[lastIndex] = str[preIndex];
+                lastIndex--;
+                preIndex--;
+            } else {
+                // 替换 0 2 % ; pre-1; last - 3
+                str[lastIndex --] = '0';
+                str[lastIndex --] = '2';
+                str[lastIndex --] = '%';
+                preIndex --;
+            }
+        }
+
+        return String.valueOf(str).trim();
+    }
+}
+```
+
+# 方案二：双指针变形版
+- 本质上也是双指针，是方案一的变形版。
+- 分析题目，虽然要求操作的是`数组`，但是返回的结果是`字符串`，所以，可以直接字符串`数组最后一位作为 Last 指针`, 替换完成后，直接截取数组生成字符串即可。这样，我们可以省略掉计算 last 指针的一次遍历。
+
+1. 首先准备两个指针，pre 指针指向原始数组末尾，last 指针指向给定字符数组末尾。如图：
+![xx](../.vuepress/public/_images/url04.png)
+
+2. 同时向前移动两个指针，将 pre 指针对应的字符复制到 last 指针对应的位置，直到pre指针碰到空格为止，如图：
+![xx](../.vuepress/public/_images/url05.png)
+
+3. 当pre指针指向空格时，将pre指针向前移动 1 位，last 指针向前移动 3 位，依次插入 0、2、%，如图：
+![xx](../.vuepress/public/_images/url06.png)
+
+4. 重复上述步骤，直到 pre 指针指向数组第一个元素，完成当前元素的复制。如图：
+![xx](../.vuepress/public/_images/url07.png)
+
+5. 截取出真实长度的字符串即可。
+
+- 代码如下：
+```java
+class Solution {
+    public String replaceSpaces(String S, int length) {
+
+        // 边界条件
+        if(S == null || S.length() == 0) {
+            return S;
+        }
+
+        char [] str = S.toCharArray();
+        int index = str.length - 1;
+        for(int i=length - 1; i >= 0; i--) {
+            if(str[i] == ' ') {
+                str[index--] = '0';
+                str[index--] = '2';
+                str[index--] = '%';
+            }else{
+                str[index--] = str[i];
+            }
+        }
+        return new String(str, index + 1, str.length - index - 1);
+    }
+}
+```
